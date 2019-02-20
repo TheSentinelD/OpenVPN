@@ -1,0 +1,18 @@
+﻿---
+- name: instalace VPN
+  hosts: "{{ seznam_stanic }}"
+  tasks:
+  - name: instalace VPN z Chocolatey
+    win_chocolatey: 
+     name: OpenVPN
+     state: present
+  - name: kopírování přístupových certifikátů
+    win_copy: 
+     src: \\storage.ccv.cz\Instalator\pfSense-TCP4-443-CCV-VPN-BRNO
+     dest: C:\Program Files\OpenVPN\config
+    vars: 
+     ansible_become: yes
+     ansible_become_method: runas
+     ansible_become_user: "{{ superucet }}"
+     ansible_become_pass: "{{ superheslo }}"
+     ansible_become_flags: logon_type=new_credentials logon_flags=netcredentials_only 
