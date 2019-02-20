@@ -10,6 +10,7 @@
     win_copy: 
      src: "{{ cesta_src }}"
      dest: "{{ cesta_dest }}"
+     remote_src: yes
     vars: 
      ansible_become: yes
      ansible_become_method: runas
