@@ -2,10 +2,10 @@
 - name: instalace VPN
   hosts: "{{ seznam_stanic }}"
   tasks:
-  - name: instalace VPN z Chocolatey
-    win_chocolatey: 
-     name: OpenVPN
-     state: present
+#  - name: instalace VPN z Chocolatey
+#    win_chocolatey: 
+#     name: OpenVPN
+#     state: present
   - name: kopírování přístupových certifikátů
     win_copy: 
      src: "{{ cesta_src }}"
