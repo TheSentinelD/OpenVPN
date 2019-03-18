@@ -4,7 +4,7 @@
   tasks:
   - name: instalace VPN z Chocolatey
     win_chocolatey: 
-     name: OpenVPN
+     name: openvpn
      state: present
   - name: kopírování přístupových certifikátů
     win_copy: 
