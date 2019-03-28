@@ -2,10 +2,17 @@
 - name: instalace VPN
   hosts: "{{ seznam_stanic }}"
   tasks:
+  - name: kontrola instalace OpenVPN
+    win_command: reg query "HKLM\SOFTWARE\OpenVPN"
+    ignore_errors: yes
+    register: result
+    
   - name: instalace VPN z Chocolatey
     win_chocolatey: 
      name: openvpn
      state: present
+    when: result is failed
+    
   - name: kopírování přístupových certifikátů
     win_copy: 
      src: "{{ cesta_src }}"
