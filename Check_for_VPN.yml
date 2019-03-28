@@ -1,0 +1,9 @@
+---
+- name: Kontrola instalace OpenVPN
+  hosts: "{{ seznam_stanic }}"
+  tasks: 
+   - name: Kontrola instalace OpenVPN
+     win_command: |
+      wmic
+      product where name="Avast Business MSI Installer" get name, version
+      
